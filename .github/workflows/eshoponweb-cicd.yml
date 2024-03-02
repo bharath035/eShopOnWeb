@@ -6,7 +6,7 @@ on: [push, workflow_dispatch]
 #Environment variables https://docs.github.com/en/actions/learn-github-actions/environment-variables
 env:
   RESOURCE-GROUP: rg-eshoponweb-bharath
-  LOCATION: westeurope
+  LOCATION: indiasouthcentral
   TEMPLATE-FILE: infra/webapp.bicep
   SUBSCRIPTION-ID: a7ac0596-9258-4532-924c-4dbb70c6ddd7
   WEBAPP-NAME: eshoponweb-webapp-Bharath
@@ -81,13 +81,13 @@ jobs:
         subscriptionId: ${{ env.a7ac0596-9258-4532-924c-4dbb70c6ddd7 }}
         resourceGroupName: ${{ env.rg-eshoponweb-bharath }}
         template: bicep-template/webapp.bicep
-        parameters: 'webAppName=${{ env.WEBAPP-NAME }} location=${{ env.LOCATION }}'
+        parameters: 'webAppName=${{ env.eshoponweb-webapp-Bharath }} location=${{ env.indiasouthcentral }}'
         failOnStdErr: false   
     
     # Publish website to Azure App Service (WebApp)
     - name: Publish Website to WebApp
       uses: Azure/webapps-deploy@v2
       with:
-        app-name: ${{ env.WEBAPP-NAME  }}
+        app-name: ${{ env.eshoponweb-webapp-Bharath  }}
         package: .net-app
    
